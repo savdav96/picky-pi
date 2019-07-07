@@ -1,7 +1,7 @@
 from socket import *
 from src.mec.Decoder import Decoder
 import time, pickle
-from src.common.Constants import *
+from src.mec.Constants import *
 
 
 def client():

@@ -1,5 +1,9 @@
-import serial, time
-from ..common.Constants import *
+import serial, time, os
+
+if os.name == 'posix':
+    ARDUINO_SERIAL = '/dev/ttyACM0'
+elif os.name == 'nt':
+    ARDUINO_SERIAL = 'COM4'
 
 
 def drive():

@@ -1,6 +1,6 @@
 import threading
 import cv2
-from ..common.Constants import *
+from src.mec.Constants import *
 
 url = 'http://' + RASP_IP + ':' + str(STREAM_PORT) + '/stream.mjpg'
 # url = 0

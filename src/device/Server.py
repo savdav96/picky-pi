@@ -1,11 +1,12 @@
 from socket import *
-from ..common.Constants import *
 import time, pickle
+
+TARGET = 'CAN'
 
 
 def server():
     ss = socket(AF_INET, SOCK_STREAM)
-    ss.bind(('', SERVER_PORT))
+    ss.bind(('', 8001))
     ss.listen(1)
 
     while True:

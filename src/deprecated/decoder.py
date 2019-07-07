@@ -1,6 +1,6 @@
 import threading
 import cv2
-from ..common.Constants import *
+from src.mec.Constants import *
 
 #url = 'http://' + Const.RASP_IP + ':' + str(Const.STREAM_PORT) + '/stream.mjpg'
 font = cv2.FONT_HERSHEY_SIMPLEX
