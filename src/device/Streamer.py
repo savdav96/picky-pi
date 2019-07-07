@@ -1,5 +1,5 @@
 import io
-#import picamera
+import picamera
 import socketserver
 from threading import Condition
 from http import server
@@ -81,16 +81,16 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
     daemon_threads = True
 
 
-#camera = picamera.PiCamera(resolution='640x480', framerate=24)
+camera = picamera.PiCamera(resolution='640x480', framerate=24)
 
 
 def stream():
-    #camera.start_recording(output, format='mjpeg')
+    camera.start_recording(output, format='mjpeg')
     print('[STREAMER] Starting.')
     try:
         address = ('', 8000)
         server = StreamingServer(address, StreamingHandler)
         server.serve_forever()
     finally:
-        #camera.stop_recording()
+        camera.stop_recording()
         print('[STREAMER] Stopping.')

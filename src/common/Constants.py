@@ -3,7 +3,7 @@ import os
 
 RASP_IP = '172.20.10.9'
 # RASP_IP = '192.168.43.96'
-RASP_IP = 'localhost'
+# RASP_IP = 'localhost'
 RASP_NAME = 'raspberry.local'
 STREAM_PORT = 8000
 SERVER_PORT = 8001

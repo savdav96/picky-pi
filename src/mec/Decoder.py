@@ -3,7 +3,7 @@ import cv2
 from ..common.Constants import *
 
 url = 'http://' + RASP_IP + ':' + str(STREAM_PORT) + '/stream.mjpg'
-url = 0
+# url = 0
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 # TOK = "2227LBsNQ4!bNUILok"
