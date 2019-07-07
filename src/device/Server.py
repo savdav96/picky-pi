@@ -1,5 +1,6 @@
 from socket import *
 import time, pickle
+from src.device.Driver import ser
 
 TARGET = 'CAN'
 
@@ -32,3 +33,6 @@ def handle(data):
         x = data[TARGET][0]
         y = data[TARGET][1]
         print('[DRIVER] x: %d, y: %d' % (x, y))
+        ser.write(str.encode(x))
+        line = ser.read()
+        print('[DRIVER] From serial:', line.decode())
