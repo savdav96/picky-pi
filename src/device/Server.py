@@ -33,6 +33,9 @@ def handle(data):
         x = data[TARGET][0]
         y = data[TARGET][1]
         print('[DRIVER] x: %d, y: %d' % (x, y))
-        ser.write(str.encode(x))
-        line = ser.read()
-        print('[DRIVER] From serial:', line.decode())
+        try:
+            ser.write(str.encode(x))
+            line = ser.read()
+            print('[DRIVER] From serial:', line.decode())
+        except Exception as e:
+            print('[DRIVER] Exception occurred. ', e)

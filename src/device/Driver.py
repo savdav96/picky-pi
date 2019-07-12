@@ -11,16 +11,16 @@ try:
 except Exception as e:
     print('[DECODER] Exception occurred.', e)
 
-
-def drive():
-    print('[DRIVER] Starting.')
-    while True:
-        time.sleep(2)
-        ser.write(str.encode('R'))
-        line = ser.read()
-        print(line.decode())
-        time.sleep(2)
-        ser.write(str.encode('G'))
-        line = ser.read()
-        print(line.decode())
-
+#
+# def drive():
+#     print('[DRIVER] Starting.')
+#     while True:
+#         time.sleep(2)
+#         ser.write(str.encode('R'))
+#         line = ser.read()
+#         print(line.decode())
+#         time.sleep(2)
+#         ser.write(str.encode('G'))
+#         line = ser.read()
+#         print(line.decode())
+#
