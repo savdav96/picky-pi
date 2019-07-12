@@ -1,6 +1,6 @@
 from socket import *
 import time, pickle
-from src.device.Driver import ser
+from Driver import ser
 
 TARGET = 'CAN'
 
@@ -34,8 +34,8 @@ def handle(data):
         y = data[TARGET][1]
         print('[DRIVER] x: %d, y: %d' % (x, y))
         try:
-            ser.write(str.encode(x))
+            ser.write(str(x).encode())
             line = ser.read()
-            print('[DRIVER] From serial:', line.decode())
+            print(line.decode())
         except Exception as e:
             print('[DRIVER] Exception occurred. ', e)
