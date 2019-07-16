@@ -32,10 +32,17 @@ def handle(data):
     if TARGET in data:
         x = data[TARGET][0]
         y = data[TARGET][1]
-        print('[DRIVER] x: %d, y: %d' % (x, y))
-        try:
-            ser.write(str(x).encode())
-            line = ser.read()
-            print(line.decode())
-        except Exception as e:
-            print('[DRIVER] Exception occurred. ', e)
+
+    else:
+        x = -256
+        y = -256
+
+    print('[DRIVER] x: %d, y: %d' % (x, y))
+
+    try:
+        ser.write(str(x).encode())
+        #line = ser.read()
+        #print(line.decode())
+    except Exception as e:
+        print('[DRIVER] Exception occurred. ', e)
+

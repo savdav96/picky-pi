@@ -19,7 +19,7 @@ class Decoder(threading.Thread):
     def draw(self, target, image, contours, color):
         for pic, contour in enumerate(contours):
             area = cv2.contourArea(contour)
-            if area > 1000:
+            if area > 400:
                 M = cv2.moments(contour)
                 cx = int(M['m10'] / M['m00'])
                 cy = int(M['m01'] / M['m00'])
@@ -39,9 +39,8 @@ class Decoder(threading.Thread):
             if not ret:
                 print('[DECODER] Error reading from source')
                 break
-
-            blurred = cv2.GaussianBlur(frame, (5, 5), 0)
-            hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+            blurred = cv2.medianBlur(frame, 11)
+            hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
             can_mask = cv2.inRange(hsv, CAN_HSV_LO, CAN_HSV_HI)
             glass_mask = cv2.inRange(hsv, GLASS_HSV_LO, GLASS_HSV_HI)
@@ -52,6 +51,7 @@ class Decoder(threading.Thread):
             (_, can_contours, hierarchy) = cv2.findContours(can_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             (_, glass_contours, hierarchy) = cv2.findContours(glass_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+            self.targets = {}
             self.draw('CAN', image, can_contours, (0, 0, 255))
             self.draw('GLASS', image, glass_contours, (0, 255, 0))
 

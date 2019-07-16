@@ -21,7 +21,7 @@ def client():
             cs.send(pickle.dumps(data))
             response = (cs.recv(1024)).decode('utf-8')
             print('[CLIENT] Response from Picky: ' + response)
-            time.sleep(0.5)
+            #time.sleep(0.5)
 
         except Exception as e:
             print('[CLIENT] Exception occurred.', e)
